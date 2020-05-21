@@ -1,0 +1,64 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">RIT II {{view}}</li>
+      <li><a routerLink="/insertitem" routerLinkActive="active">Insert Item</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class= "grid-x grid-padding-x">
+    <div class="cell small-6 medium-8">  
+      <div class="panel">
+        <h5> {{userName}} click in an item to place a bid </h5>
+        <table>
+          <thead>
+            <th>Description</th>
+            <th>Current Bid</th>
+            <th>Remaining Time</th>
+            <th>Wining user</th> 
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td (click)="selectBidItem(item)" clickable > <p (mouseover)="isOver=true" (mouseleave)="isOver=false" [style.font-weight]="isOver ? 'bold' : 'normal'" > {{item.description}} </p> </td>
+              <td (click)="selectBidItem(item)" clickable > {{item.currentbid}} </td>
+              <td (click)="selectBidItem(item)" clickable > {{item.remainingtime}} </td>
+              <td (click)="selectBidItem(item)" clickable > {{item.wininguser}} </td>
+            </tr>
+          </tbody>  
+        </table>
+      </div> 
+      <div *ngIf="showBid">
+        <form> 
+          <label>Place bid for item {{selectedItem.description}}
+            <input #bid type="number" name="bid" placeholder="bidvalue"/>
+          </label> 
+        </form>  
+        <a class= "button [tiny small large]" (click)="submitBid(bid.value)">Submit</a>
+        <a class= "button [tiny small large]" (click)="cancelBid()">Cancel</a>
+      </div>
+    </div> 
+    <div class="cell small-6 medium-8">
+      <div class="panel">
+        <p *ngFor="let message of messages">
+          {{message}}
+        </p>  
+      </div>
+      <div *ngIf="errorMessage" class="alert callout" data-closable>
+          <h5> {{errorMessage}} </h5>
+          <button class="close-button" (click)="clearError()" aria-label="close" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>  
+      </div>
+    </div>
+     
+  
+</div>
+
+
+

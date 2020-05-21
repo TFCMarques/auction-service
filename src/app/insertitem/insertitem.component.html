@@ -1,0 +1,51 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">RIT II {{View}}</li>
+      <li><a routerLink="/auction" routerLinkActive="active">Auctions</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a routerLink="/auction" routerLinkActive="active">Auctions</a></li>
+    </ul>
+  </div>
+</div>
+<div class= "panel"> 
+    <form (ngSubmit)="onSubmit()" #itemForm= "ngForm" > 
+       <div class= "grid-container">
+          <div class = "grid-x grid-padding-x">
+             <div class="cell small-6 medium-8">
+               <label for="description">Description</label> 
+                 <input id="description" [(ngModel)]="item.description" type="text" name="description" #description="ngModel"/>
+                 <div [hidden]="description.valid || description.pristine" class="alert callout">
+                   description is required
+                 </div>
+               <label for="currentbid">Starting bid value</label>
+                 <input id="currentbid" required [(ngModel)]="item.currentbid" type="number" name="currentbid" #currentbid="ngModel"/>
+                 <div [hidden]="currentbid.valid || currentbid.pristine"
+                   class="alert callout">
+                   Starting bid value is required
+                 </div>
+               <label for="remainingtime">Duration (in seconds)</label> 
+                 <input id="remainingtime" required [(ngModel)]="item.remainingtime" type="number" name="remainingtime" #remainingtime="ngModel" />
+                 <div [hidden]="remainingtime.valid || remainingtime.pristine"
+                   class="alert callout">
+                   Duration (in seconds) is required
+                 </div>
+               <button type= "submit" class="button [tiny small large]" [disabled]="!itemForm.form.valid"> Submit</button>
+               <button type="button" class="button [tiny small large]" (click)="clearForm();itemForm.reset()" > Clear </button>  
+             </div>
+          </div>      
+       </div>    
+    </form>  
+      <div class= "grid -x grid-padding-x">
+        <div class="cell small-6 medium-8">
+        <div *ngIf="errorMessage" class="alert callout" data-closable>
+          <h5> {{errorMessage}} </h5>
+          <button class="close-button" (click)="clearError()" aria-label="close" type="button" data-close>
+          </button>  
+        </div>
+        </div>
+      </div>
+</div>    

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "auction19": {
+    "auction20": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/auction19",
+            "outputPath": "dist/auction20",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "auction19:build"
+            "browserTarget": "auction20:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "auction19:build:production"
+              "browserTarget": "auction20:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "auction19:build"
+            "browserTarget": "auction20:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "auction19-e2e": {
+    "auction20-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "auction19:serve"
+            "devServerTarget": "auction20:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "auction19:serve:production"
+              "devServerTarget": "auction20:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "auction19"
+  "defaultProject": "auction20"
 }

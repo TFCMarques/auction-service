@@ -1,0 +1,42 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">RIT II {{View}}</li>
+      <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a routerLink="/unregister" routerLinkActive="active">Unregister</a></li>
+    </ul>
+  </div>
+</div>
+<form>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="cell small-6 medium-8">
+        <label>User Name
+          <input #UserName type="text" name="user" placeholder="Username" />
+        </label>
+        <label>Password
+          <input #Password type="password" name="pass" placeholder="Password" />
+        </label>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="grid-container">
+  <div class="grid-x grid-padding-x">
+    <div class="cell small-6 medium-8">
+      <a class="button [tiny small large]" (click)="login(UserName.value, Password.value); Password.value=''">sign
+        in</a>
+      <a class="button [tiny small large]" routerLink="/register" routerLinkActive="active">New? Register Here</a>
+      <div *ngIf="errorMessage" class="alert callout" data-closable>
+        <h5> {{errorMessage}} </h5>
+        <button class="close-button" (click)="clearError()" aria-label="close" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

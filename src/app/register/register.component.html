@@ -1,0 +1,54 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">RIT II {{View}}</li>
+      <li><a routerLink="/signin" routerLinkActive="active">Sign In</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a routerLink="/register" routerLinkActive="active">Sign In</a></li>
+    </ul>
+  </div>
+</div>
+<div class= "panel"> 
+    <form (ngSubmit)="onSubmit()" #userForm= "ngForm" > 
+       <div class= "row">
+          <div class = "grid-x grid-padding-x">
+               <div class="cell small-6 medium-8">
+                 <label for="name">Name</label> 
+                   <input id="name" [(ngModel)]="user.name" type="text" name="name" />
+                 <label for="email">E-mail</label>
+                   <input id="email" required [(ngModel)]="user.email" type="email" name="email" #email="ngModel"/>
+                   <div [hidden]="email.valid || email.pristine"
+                     class="alert callout">
+                     e-mail is required
+                   </div>
+                 <label for="username">User Name</label> 
+                   <input id="username" required [(ngModel)]="user.username" type="text" name="username" #username="ngModel" />
+                   <div [hidden]="username.valid || username.pristine"
+                     class="alert callout">
+                     User Name is required
+                   </div>
+                 <label for="password">Password</label>
+                   <input id="password" required [(ngModel)]="user.password" type="password" name="pass" #pass="ngModel"/>
+                   <div [hidden]="pass.valid || pass.pristine"
+                     class="alert callout">
+                     Password is required
+                   </div>
+                 <button type= "submit" class="button [tiny small large]" [disabled]="!userForm.form.valid"> Submit</button>
+                 <button type="button" class="button [tiny small large]" (click)="clearForm();userForm.reset()" > Clear </button>  
+               </div>
+         </div>      
+       </div>    
+    </form>  
+      <div class= "grid -x grid-padding-x">
+        <div class="cell small-6 medium-8">
+        <div *ngIf="errorMessage" class="alert callout" data-closable>
+          <h5> {{errorMessage}} </h5>
+          <button class="close-button" (click)="clearError()" aria-label="close" type="button" data-close>
+          </button>  
+        </div>
+        </div>
+      </div>
+</div>    
